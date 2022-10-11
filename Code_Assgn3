@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assigment_3
+{
+    class Candidate
+    {
+
+        string firstName;
+        //string lastName;
+        double cgpa;
+
+
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                string[] names = {"Ali","Usama","Ahmad","Akber","Noman","Adam","Abir","Umair"
+                                     ,"Akmal","Ahsan","Amir","Badar","Asad"
+                                     ,"Akram","Abdul" };
+
+
+
+                List<Candidate> Name = new List<Candidate>();
+                Random ran = new Random();
+                for (int i = 0; i < names.Length; i++)
+                {
+                    Candidate C = new Candidate();
+                    C.firstName = names[i];
+                    C.cgpa = ran.Next(2, 4) + Math.Round(ran.NextDouble(), 2);
+                    Name.Add(C);
+                }
+
+
+
+                for (int j = 0; j < Name.Count; j++)
+                {
+
+                    if (Name[j].cgpa < 3)
+                    {
+                        Name.RemoveAt(j);
+                    }
+                    else
+                    {
+                        Console.WriteLine(Name[j].firstName + " " + Name[j].cgpa);
+                    }
+                }
+                Console.ReadLine();
+            }
+        }
+    }
+}
